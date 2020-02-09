@@ -63,7 +63,7 @@ class PostController extends Controller
 
     public function update(Post $post)
     {
-        $parsedParams = $this->validatePost($request);
+        $parsedParams = $this->validatePost($post);
         $post->fill($parsedParams);
         $post->save();
 
