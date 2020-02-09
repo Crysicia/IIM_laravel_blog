@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/posts');
 
 Auth::routes();
 
@@ -30,3 +28,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::patch('/posts/{post}', 'PostController@update')->name('posts.update');
 // Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');
 Route::resource('/posts', 'PostController');
+
+Route::resource('posts.comments', 'CommentController', ['only' => ['store', 'destroy']]);
+Route::resource('posts.likes', 'LikePostController', ['only' => ['store', 'destroy']]);
+Route::resource('comments.likes', 'LikeCommentController', ['only' => ['store', 'destroy']]);
